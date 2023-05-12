@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {{ user }}
+    <a href="{% url 'logout' %}">Log Out</a>
+
+{% else %}
+    <form method="post" action="/auth/">
+    {% csrf_token %}
+    <table>
+    <tr>
+        <input type="name" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" value="Login">
+    </tr>
+    </table>
+    </form>
+{% endif %}
+</tbody>
+</table>
+{% endblock %}

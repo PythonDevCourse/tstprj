@@ -18,10 +18,13 @@ from django.urls import path
 
 from accounts.views import view, AccountListView
 from django.views.generic import RedirectView
+from auth.views import auth, logout_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", view, name="home"),
     path("new/", AccountListView.as_view(), name="new"),
     path("redirect/", RedirectView.as_view(url="http://ya.ru"), name="redirect"),
+    path("auth/", auth, name="auth"),
+    path("logout/", logout_view, name="logout"),
 ]
